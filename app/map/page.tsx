@@ -8,7 +8,8 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Utensils, Search, MapPin, Clock, Navigation, Filter, List, Layers, Plus } from "lucide-react"
+import Navigation from "@/components/navigation"
+import { Utensils, Search, MapPin, Clock, Navigation as NavIcon, Filter, List, Layers, Plus } from "lucide-react"
 
 // Mock data with coordinates for map display
 const mockListings = [
@@ -116,34 +117,9 @@ export default function MapPage() {
 
   return (
     <div className="h-screen bg-background flex flex-col">
-      {/* Navigation */}
-      <nav className="border-b border-border bg-card/50 backdrop-blur-sm z-10">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <Utensils className="h-8 w-8 text-primary" />
-              <h1 className="text-2xl font-bold text-foreground">RePlate</h1>
-            </Link>
-            <div className="flex items-center gap-4">
-              <Button variant="outline" onClick={() => setShowSidebar(!showSidebar)} className="lg:hidden">
-                <Filter className="h-4 w-4" />
-              </Button>
-              <Link href="/listings">
-                <Button variant="outline">
-                  <List className="mr-2 h-4 w-4" />
-                  List View
-                </Button>
-              </Link>
-              <Link href="/listings/create">
-                <Button>
-                  <Plus className="mr-2 h-4 w-4" />
-                  List Food
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <div className="z-10">
+        <Navigation />
+      </div>
 
       <div className="flex-1 flex relative">
         {/* Sidebar */}
@@ -316,7 +292,7 @@ export default function MapPage() {
               <Layers className="h-4 w-4" />
             </Button>
             <Button size="sm" variant="outline" className="bg-white/90 backdrop-blur-sm">
-              <Navigation className="h-4 w-4" />
+              <NavIcon className="h-4 w-4" />
             </Button>
           </div>
 

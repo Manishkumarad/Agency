@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
+import Navigation from "@/components/navigation"
 import { Utensils, Search, MapPin, Clock, Plus, Map } from "lucide-react"
 
 const mockListings = [
@@ -156,34 +157,7 @@ export default function ListingsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <Utensils className="h-8 w-8 text-primary" />
-              <h1 className="text-2xl font-bold text-foreground">RePlate</h1>
-            </Link>
-            <div className="flex items-center gap-4">
-              <Link href="/map">
-                <Button variant="outline">
-                  <Map className="mr-2 h-4 w-4" />
-                  Map View
-                </Button>
-              </Link>
-              <Link href="/listings/create">
-                <Button>
-                  <Plus className="mr-2 h-4 w-4" />
-                  List Food
-                </Button>
-              </Link>
-              <Link href="/dashboard">
-                <Button variant="outline">Dashboard</Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       <div className="container mx-auto px-4 py-8">
         {/* Header */}

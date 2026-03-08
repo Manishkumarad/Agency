@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import Navigation from "@/components/navigation"
 import {
   Dialog,
   DialogContent,
@@ -140,25 +141,7 @@ export default function RequestsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <Utensils className="h-8 w-8 text-primary" />
-              <h1 className="text-2xl font-bold text-foreground">RePlate</h1>
-            </Link>
-            <div className="flex items-center gap-4">
-              <Link href="/listings">
-                <Button variant="outline">Browse Listings</Button>
-              </Link>
-              <Link href="/dashboard">
-                <Button variant="outline">Dashboard</Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8">

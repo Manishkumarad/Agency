@@ -1,12 +1,15 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
+import Navigation from "@/components/navigation"
+import { getStoredUser, isAuthenticated } from "@/lib/auth"
 import {
   Utensils,
   Plus,
@@ -22,17 +25,6 @@ import {
   Package,
   CheckCircle,
 } from "lucide-react"
-
-// Mock user data - in real app this would come from authentication
-const mockUser = {
-  id: 1,
-  name: "Sarah Johnson",
-  email: "sarah@downtowndeli.com",
-  type: "donor", // or "receiver"
-  organizationName: "Downtown Deli",
-  joinedDate: "2024-01-01",
-  avatar: "/placeholder.svg?height=40&width=40",
-}
 
 // Mock dashboard data
 const mockDashboardData = {
@@ -145,7 +137,36 @@ const mockDashboardData = {
 }
 
 export default function DashboardPage() {
-  const [userType, setUserType] = useState<"donor" | "receiver">(mockUser.type as "donor" | "receiver")
+  const router = useRouter()
+  const [user, setUser] = useState<any>(null)
+  const [userType, setUserType] = useState<"donor" | "receiver">("donor")
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    if (!isAuthenticated()) {
+      router.push("/login")
+      return
+    }
+    const userData = getStoredUser()
+    if (userData) {
+      setUser(userData)
+      setUserType(userData.userType || "donor")
+    } else {
+      router.push("/login")
+    }
+  }, [router])
+
+  if (!mounted || !user) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    )
+  }
+
   const data = mockDashboardData[userType]
 
   const getActivityIcon = (type: string) => {
@@ -163,39 +184,15 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <Utensils className="h-8 w-8 text-primary" />
-              <h1 className="text-2xl font-bold text-foreground">RePlate</h1>
-            </Link>
-            <div className="flex items-center gap-4">
-              <Link href="/listings">
-                <Button variant="outline">Browse Food</Button>
-              </Link>
-              <Link href="/requests">
-                <Button variant="outline">Requests</Button>
-              </Link>
-              <Button variant="outline" size="icon">
-                <Bell className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="icon">
-                <Settings className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold text-foreground">Welcome back, {mockUser.name.split(" ")[0]}!</h2>
+            <h2 className="text-3xl font-bold text-foreground">Welcome back, {user.name.split(" ")[0]}!</h2>
             <p className="text-muted-foreground mt-1">
-              {mockUser.organizationName} • {userType === "donor" ? "Food Donor" : "Food Receiver"}
+              {user.organizationName} • {userType === "donor" ? "Food Donor" : "Food Receiver"}
             </p>
           </div>
           <div className="flex items-center gap-3">

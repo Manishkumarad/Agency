@@ -3,82 +3,108 @@
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%; /* White background */
-  --foreground: 215 25% 27%; /* Dark cyan text #475569 */
-  --card: 186 100% 94%; /* Light cyan card background #ecfeff */
-  --card-foreground: 195 100% 20%; /* Cyan-800 card text #164e63 */
-  --popover: 0 0% 100%; /* White popover */
-  --popover-foreground: 215 25% 27%; /* Dark cyan popover text */
-  --primary: 195 100% 20%; /* Cyan-800 primary #164e63 */
-  --primary-foreground: 0 0% 100%; /* White text on primary */
-  --secondary: 32 95% 44%; /* Amber-600 secondary #d97706 */
-  --secondary-foreground: 0 0% 100%; /* White text on secondary */
-  --muted: 210 40% 98%; /* Very light gray #f8fafc */
-  --muted-foreground: 215 25% 27%; /* Dark cyan muted text */
-  --accent: 32 95% 44%; /* Amber-600 accent #d97706 */
-  --accent-foreground: 0 0% 100%; /* White text on accent */
-  --destructive: 0 84% 60%; /* Red for errors */
-  --destructive-foreground: 0 0% 100%; /* White text on destructive */
-  --border: 214 32% 91%; /* Light gray border #e0e0e0 */
-  --input: 210 40% 98%; /* Light input background #f8fafc */
-  --ring: 32 95% 44%; /* Amber focus ring */
-  --chart-1: 195 100% 20%; /* Cyan-800 for charts */
-  --chart-2: 32 95% 44%; /* Amber-600 for charts */
-  --chart-3: 186 100% 94%; /* Light cyan for charts */
-  --chart-4: 215 25% 27%; /* Dark cyan for charts */
-  --chart-5: 210 40% 98%; /* Very light gray for charts */
+  --background: 0 0% 100%; /* Pure white */
+  --foreground: 222 47% 11%; /* Rich charcoal #0f172a */
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 222 47% 11%; /* Charcoal for buttons */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 96%; /* Light grey */
+  --secondary-foreground: 222 47% 11%;
+  --muted: 220 14% 98%; /* Off-white */
+  --muted-foreground: 220 9% 46%; /* Grey-500 */
+  --accent: 210 40% 96%; /* Soft blue-grey accent */
+  --accent-foreground: 222 47% 11%;
+  --highlight: 199 89% 48%; /* Teal accent */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 91%; /* Grey-200 #e5e7eb */
+  --input: 220 14% 96%;
+  --ring: 220 10% 14%;
+  --chart-1: 220 10% 14%;
+  --chart-2: 220 9% 46%;
+  --chart-3: 220 14% 96%;
+  --chart-4: 220 13% 91%;
+  --chart-5: 0 0% 100%;
   --radius: 0.5rem;
-  --sidebar: 0 0% 100%; /* White sidebar */
-  --sidebar-foreground: 215 25% 27%; /* Dark cyan sidebar text */
-  --sidebar-primary: 195 100% 20%; /* Cyan-800 sidebar primary */
-  --sidebar-primary-foreground: 0 0% 100%; /* White sidebar primary text */
-  --sidebar-accent: 32 95% 44%; /* Amber sidebar accent */
-  --sidebar-accent-foreground: 0 0% 100%; /* White sidebar accent text */
-  --sidebar-border: 214 32% 91%; /* Light gray sidebar border */
-  --sidebar-ring: 32 95% 44%; /* Amber sidebar focus ring */
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 220 10% 14%;
+  --sidebar-primary: 220 10% 14%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 220 14% 96%;
+  --sidebar-accent-foreground: 220 10% 14%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 220 10% 14%;
 }
 
 .dark {
-  --background: 215 25% 15%; /* Dark background */
-  --foreground: 186 100% 98%; /* Light cyan text */
-  --card: 215 25% 18%; /* Dark card background */
-  --card-foreground: 186 100% 98%; /* Light cyan card text */
-  --popover: 215 25% 15%; /* Dark popover */
-  --popover-foreground: 186 100% 98%; /* Light cyan popover text */
-  --primary: 186 100% 98%; /* Light cyan primary in dark mode */
-  --primary-foreground: 215 25% 15%; /* Dark text on primary */
-  --secondary: 215 25% 35%; /* Dark secondary */
-  --secondary-foreground: 186 100% 98%; /* Light text on secondary */
-  --muted: 215 25% 25%; /* Dark muted */
-  --muted-foreground: 186 100% 70%; /* Medium cyan muted text */
-  --accent: 32 95% 44%; /* Keep amber accent in dark mode */
-  --accent-foreground: 0 0% 100%; /* White text on accent */
-  --destructive: 0 84% 60%; /* Dark mode red */
-  --destructive-foreground: 0 0% 100%; /* Dark mode red text */
-  --border: 215 25% 25%; /* Dark border */
-  --input: 215 25% 25%; /* Dark input */
-  --ring: 32 95% 44%; /* Keep amber focus ring */
-  --chart-1: 32 95% 44%; /* Amber for dark charts */
-  --chart-2: 186 100% 98%; /* Light cyan for dark charts */
-  --chart-3: 186 100% 70%; /* Medium cyan for dark charts */
-  --chart-4: 215 25% 35%; /* Dark cyan for dark charts */
-  --chart-5: 215 25% 25%; /* Very dark for dark charts */
-  --sidebar: 215 25% 12%; /* Very dark sidebar */
-  --sidebar-foreground: 186 100% 98%; /* Light sidebar text */
-  --sidebar-primary: 32 95% 44%; /* Amber sidebar primary */
-  --sidebar-primary-foreground: 0 0% 100%; /* White sidebar primary text */
-  --sidebar-accent: 215 25% 25%; /* Dark sidebar accent */
-  --sidebar-accent-foreground: 186 100% 98%; /* Light sidebar accent text */
-  --sidebar-border: 215 25% 25%; /* Dark sidebar border */
-  --sidebar-ring: 32 95% 44%; /* Amber sidebar focus ring */
+  --background: 220 10% 10%;
+  --foreground: 220 14% 96%;
+  --card: 220 10% 12%;
+  --card-foreground: 220 14% 96%;
+  --popover: 220 10% 10%;
+  --popover-foreground: 220 14% 96%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 220 10% 10%;
+  --secondary: 220 10% 20%;
+  --secondary-foreground: 220 14% 96%;
+  --muted: 220 10% 20%;
+  --muted-foreground: 220 9% 60%;
+  --accent: 220 10% 20%;
+  --accent-foreground: 220 14% 96%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 10% 20%;
+  --input: 220 10% 20%;
+  --ring: 0 0% 100%;
+  --chart-1: 0 0% 100%;
+  --chart-2: 220 9% 60%;
+  --chart-3: 220 10% 20%;
+  --chart-4: 220 10% 25%;
+  --chart-5: 220 14% 96%;
+  --sidebar: 220 10% 8%;
+  --sidebar-foreground: 220 14% 96%;
+  --sidebar-primary: 0 0% 100%;
+  --sidebar-primary-foreground: 220 10% 10%;
+  --sidebar-accent: 220 10% 20%;
+  --sidebar-accent-foreground: 220 14% 96%;
+  --sidebar-border: 220 10% 20%;
+  --sidebar-ring: 0 0% 100%;
 }
-
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Clients / Partners sliding animation */
+@keyframes slide-clients {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.clients-slide {
+  animation: slide-clients 25s linear infinite;
+}
+
+.clients-slide:hover {
+  animation-play-state: paused;
 }

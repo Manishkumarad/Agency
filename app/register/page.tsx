@@ -3,8 +3,9 @@
 import type React from "react"
 
 import { useState } from "react"
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
+import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -13,10 +14,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Utensils, Eye, EyeOff, Building, Heart } from "lucide-react"
 
 export default function RegisterPage() {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const defaultType = searchParams.get("type") || "donor"
 
   const [showPassword, setShowPassword] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,8 +34,52 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Still working on the registration API integration
-    console.log("New user registration:", formData.email, formData.userType)
+
+    // Client-side validation
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match")
+      return
+    }
+
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters long")
+      return
+    }
+
+    setIsLoading(true)
+
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        toast.error(data.error || "Registration failed. Please try again.")
+        return
+      }
+
+      // Store user data in localStorage
+      localStorage.setItem("user", JSON.stringify(data.user))
+      localStorage.setItem("isAuthenticated", "true")
+
+      toast.success("Registration successful! Redirecting to dashboard...")
+      
+      // Redirect to dashboard after a short delay
+      setTimeout(() => {
+        router.push("/dashboard")
+      }, 1000)
+    } catch (error) {
+      console.error("Registration error:", error)
+      toast.error("An error occurred. Please try again.")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -204,8 +251,8 @@ export default function RegisterPage() {
                 />
               </div>
 
-              <Button type="submit" className="w-full">
-                Create Account
+              <Button type="submit" className="w-full" disabled={isLoading}>
+                {isLoading ? "Creating account..." : "Create Account"}
               </Button>
             </form>
 
