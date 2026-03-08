@@ -1,18 +1,19 @@
-# RePlate - Community Food Redistribution Platform
+# ScaleCraft - Digital Agency Website
 
-![RePlate Logo](https://img.shields.io/badge/RePlate-Food%20Redistribution-green?style=for-the-badge&logo=heart)
+![ScaleCraft Logo](https://img.shields.io/badge/ScaleCraft-Digital%20Agency-blue?style=for-the-badge&logo=rocket)
 
-A modern Next.js web application that connects communities through food redistribution, helping reduce food waste and fight hunger by connecting restaurants, grocery stores, and event organizers with local charities and shelters.
+A modern Next.js digital agency website that helps small businesses grow online. We build websites, e-commerce stores, and mobile applications that bring customers to your business.
 
 ## 🌟 Features
 
-- **Interactive Food Map**: Discover available food donations in your area with real-time location tracking
-- **Easy Listing Creation**: Restaurants and stores can easily post surplus food with photos and details
-- **Request Management**: Charities and shelters can request and manage food pickups
-- **User Dashboard**: Track your impact and manage your food redistribution activities
-- **Real-time Updates**: Get instant notifications about food availability and requests
+- **Modern Design**: Beautiful, responsive website built with Next.js 14 and Tailwind CSS
+- **Contact Forms**: Functional contact and audit request forms with email integration
+- **Service Showcase**: Display of web development, e-commerce, and mobile app services
+- **Portfolio**: Case studies and success stories from real clients
+- **Pricing Plans**: Clear pricing tiers for different service packages
+- **Interactive Elements**: Smooth animations and modern UI components
 - **Mobile Responsive**: Works seamlessly on desktop and mobile devices
-- **Modern UI**: Beautiful interface built with Tailwind CSS and Radix UI components
+- **SEO Optimized**: Built with best practices for search engine optimization
 
 ## 🚀 Tech Stack
 
@@ -20,22 +21,23 @@ A modern Next.js web application that connects communities through food redistri
 - **Styling**: Tailwind CSS, Radix UI Components
 - **Icons**: Lucide React
 - **Forms**: React Hook Form with Zod validation
+- **Email Service**: Resend API for contact form submissions
 - **State Management**: React Hooks
 - **Build Tool**: Next.js built-in bundler
 
 ## 📱 Application Structure
 
 ### Public Pages
-- **Homepage** (`/`): Landing page with features, testimonials, and impact stats
-- **Food Map** (`/map`): Interactive map showing available food donations
-- **Listings** (`/listings`): Browse all available food donations
-- **Impact** (`/impact`): View community impact and statistics
+- **Homepage** (`/`): Landing page with services, portfolio, and testimonials
+- **Services** (`#services`): Detailed service offerings
+- **Portfolio** (`#portfolio`): Client work and case studies
+- **Pricing** (`#pricing`): Service packages and pricing
+- **Contact** (`#contact`): Contact form and business information
 
-### User Pages
-- **Dashboard** (`/dashboard`): Personal dashboard with analytics and activity tracking
-- **Create Listing** (`/listings/create`): Form to post new food donations
-- **Requests** (`/requests`): Manage incoming and outgoing food requests
-- **Authentication**: Login (`/login`) and registration (`/register`) pages
+### Forms & API
+- **Free Audit Form** (`#audit`): Website audit request form
+- **Contact API** (`/api/contact`): Handles contact form submissions
+- **Audit API** (`/api/audit`): Handles audit request submissions
 
 ## 🛠️ Getting Started
 
@@ -48,8 +50,8 @@ A modern Next.js web application that connects communities through food redistri
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Manishkumar7070/replate-1.git
-   cd replate-1
+   git clone https://github.com/Manishkumarad/Agency.git
+   cd Agency
    ```
 
 2. **Install dependencies**
@@ -59,66 +61,65 @@ A modern Next.js web application that connects communities through food redistri
    yarn install
    ```
 
-3. **Start the development server**
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   # Edit .env.local with your email configuration
+   ```
+
+4. **Start the development server**
    ```bash
    npm run dev
    # or
    yarn dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 📁 Project Structure
 
 ```
-replate-1/
+Agency/
 ├── app/                    # Next.js app directory
-│   ├── dashboard/         # User dashboard pages
-│   │   ├── analytics/     # Analytics dashboard
-│   │   └── impact/        # Impact tracking
-│   ├── listings/          # Food listing pages
-│   │   ├── [id]/         # Individual listing details
-│   │   └── create/       # Create new listing
-│   ├── map/              # Interactive map page
-│   ├── requests/         # Request management
-│   ├── login/            # Authentication pages
-│   ├── register/         # User registration
-│   ├── impact/           # Public impact page
-│   ├── globals.css       # Global styles
-│   └── layout.tsx        # Root layout
+│   ├── api/               # API routes
+│   │   ├── audit/         # Audit form API
+│   │   ├── contact/       # Contact form API
+│   │   └── auth/          # Authentication APIs
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Homepage
 ├── components/            # Reusable UI components
 │   ├── ui/               # Base UI components (Radix UI)
-│   ├── map-marker.tsx    # Map marker component
-│   ├── pickup-request-form.tsx
-│   └── theme-provider.tsx
+│   └── agency-navigation.tsx
 ├── lib/                  # Utility functions
+│   ├── auth-store.ts     # Authentication store
+│   └── auth.ts           # Auth utilities
 ├── public/               # Static assets
-│   ├── *.jpg            # Food images
-│   └── *.png            # UI assets
-├── styles/              # Additional stylesheets
-├── package.json         # Dependencies
-├── next.config.mjs      # Next.js configuration
-├── tailwind.config.js   # Tailwind CSS config
-└── tsconfig.json        # TypeScript configuration
+├── package.json          # Dependencies
+├── next.config.mjs       # Next.js configuration
+├── tailwind.config.js    # Tailwind CSS config
+└── tsconfig.json         # TypeScript configuration
 ```
 
 ## 🎨 Key Components
 
-- **Map Integration**: Interactive map with custom markers for food locations
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Form Handling**: Comprehensive forms with validation using React Hook Form
-- **State Management**: React hooks for local state management
-- **Type Safety**: Full TypeScript implementation
-- **UI Components**: Custom components built with Radix UI primitives
+- **Email Integration**: Resend API for contact form submissions
+- **Modern UI**: Custom components built with Radix UI primitives
+- **Interactive Elements**: Smooth animations and transitions
 
-## 🌍 Impact & Mission
+## 📧 Email Configuration
 
-RePlate helps communities by:
-- **Reducing Food Waste**: Connecting surplus food with those who need it
-- **Fighting Hunger**: Making fresh food accessible to shelters and food banks
-- **Building Community**: Creating connections between local businesses and organizations
-- **Environmental Impact**: Reducing food waste that would otherwise end up in landfills
+The contact forms use Resend for email delivery. Set up your environment variables:
+
+```env
+CONTACT_EMAIL=your-email@example.com
+RESEND_API_KEY=re_your_api_key_here
+```
+
+Get your free API key at [https://resend.com](https://resend.com)
 
 ## 🚀 Development
 
@@ -133,7 +134,26 @@ npm run lint     # Run ESLint
 
 ### Environment Setup
 
-The application uses standard Next.js environment variables. No additional configuration is required for basic functionality.
+1. Copy `.env.example` to `.env.local`
+2. Add your email configuration
+3. Get a free Resend API key from https://resend.com
+
+## 🌍 Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Add environment variables in Vercel dashboard
+4. Deploy automatically
+
+### Other Platforms
+
+The application can be deployed to any platform that supports Next.js:
+- Netlify
+- AWS Amplify
+- Digital Ocean
+- Railway
 
 ## 🤝 Contributing
 
@@ -151,24 +171,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- **Manish Kumar** - *Initial work* - [Manishkumar7070](https://github.com/Manishkumar7070)
+- **Manish Kumar** - *Initial work* - [Manishkumarad](https://github.com/Manishkumarad)
 
-## 🙏 Acknowledgments
+## � Contact
 
-- Thanks to all the contributors who help make this project better
-- Inspired by the need to reduce food waste and help communities
-- Built with modern web technologies for optimal performance
-- UI components powered by Radix UI and styled with Tailwind CSS
-
-## 📞 Contact
-
-- **Email**: manishkumards37@gmail.com
-- **GitHub**: [@Manishkumar7070](https://github.com/Manishkumar7070)
-- **Project Link**: [https://github.com/Manishkumar7070/replate-1](https://github.com/Manishkumar7070/replate-1)
+- **Email**: deodhmanish059@gmail.com
+- **Phone**: 9135112405
+- **Location**: Mig 24, Rajeev Nagar, Bhopal, Madhya Pradesh
+- **GitHub**: [@Manishkumarad](https://github.com/Manishkumarad)
+- **Project Link**: [https://github.com/Manishkumarad/Agency](https://github.com/Manishkumarad/Agency)
 
 ## 🔗 Live Demo
 
-Visit the live application: [http://localhost:3000](http://localhost:3000) (when running locally)
+Visit the live application: [https://your-domain.vercel.app](https://your-domain.vercel.app)
 
 ---
 
